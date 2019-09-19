@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: testLatticeApp
+
+logging:
+  level:
+    org.influxdb: DEBUG
+    
+management:
+  metrics:
+    export:
+      influx:
+        db: testdb
+        uri: http://influxdb:8086
+        autoCreateDb: true
+        step: 10s
+        userName: admin
+        password: admin
+  endpoints:
+    web:
+      exposure:
+        include: "*"

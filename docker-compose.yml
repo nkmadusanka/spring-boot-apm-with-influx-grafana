@@ -1,0 +1,46 @@
+# Container for Grafana dashboard
+grafana:
+  image: grafana/grafana
+  ports:
+    - 3000:3000
+  volumes:
+    - /var/lib/grafana
+  links:
+    - influxdb
+  environment:
+    GF_SECURITY_ADMIN_PASSWORD: admin
+    # GF_SMTP_ENABLED: "true"
+    # GF_SMTP_HOST: smtp.host
+    # GF_SMTP_USER: smtp.user
+    # GF_SMTP_PASSWORD: smtp.password
+
+# Container for influxDB
+influxdb:
+  image: influxdb
+  ports:
+    - 8086:8086
+  volumes:
+    - /var/lib/influxdb
+  environment: 
+    INFLUXDB_HTTP_AUTH_ENABLED: "true"
+    INFLUXDB_USER: user
+    INFLUXDB_USER_PASSWORD: user
+    INFLUXDB_DB: testdb
+    INFLUXDB_ADMIN_USER: admin
+    INFLUXDB_ADMIN_PASSWORD: admin
+
+# Spring boot application
+spring:
+  image: springio/gs-spring-boot-docker
+  ports: 
+    - 8080:8080
+  links: 
+    - influxdb
+
+# Another spring boot application instance
+spring2:
+  image: springio/gs-spring-boot-docker
+  ports: 
+    - 8081:8080
+  links: 
+    - influxdb
