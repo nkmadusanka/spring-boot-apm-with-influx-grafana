@@ -23,3 +23,11 @@ Useful commands,
 Grafana instance can be accessed via `http://localhost:3000`, username and password is set to `admin`, you may change that from the `docker-compose.yml`.
 
 Spring boot API can be accessed via `http://localhost:8080`.
+
+## Useful Links
+- [Spring Documentation](https://spring.io/)
+- [Micrometer Documentation](https://micrometer.io/docs/)
+- [Grafana Documentation](https://grafana.com/docs/guides/getting_started/)
+- [Grafana Docker Container](https://hub.docker.com/r/grafana/grafana)
+- [InfluxDB Documentation](https://docs.influxdata.com/influxdb/)
+- [InfluxDB Docker Container](https://hub.docker.com/_/influxdb)
